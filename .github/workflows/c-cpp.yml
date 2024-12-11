@@ -2,7 +2,10 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - "main"
+    tags:
+      - "v*"
   pull_request:
     branches: [ "main" ]
 
@@ -16,7 +19,7 @@ jobs:
     - name: cmake init
       run: cmake -S . -B .build_x64  -DCMAKE_INSTALL_PREFIX=.build_x64/install -DCMAKE_BUILD_TYPE=Debug
     - name: cmake
-      run: cmake --build .build_x64  -j --config Debug
+      run: cmake --build .build_x64  -j  --target install --config Debug
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
