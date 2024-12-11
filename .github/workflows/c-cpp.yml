@@ -22,5 +22,5 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         token: ${{ secrets.release_token }}
-          files: |
-            ./build_x64/install/**
+        files: |
+          ./build_x64/install/**
