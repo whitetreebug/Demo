@@ -9,9 +9,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v4
-    - name: make
-      run: make
+    - name: cmake init
+      run: cmake -S . -B .build_x64   -DCMAKE_BUILD_TYPE=Debug
+    - name: cmake
+      run: cmake --build .build_x64  -j --target install --config Debug    
