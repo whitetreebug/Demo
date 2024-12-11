@@ -17,3 +17,10 @@ jobs:
       run: cmake -S . -B .build_x64  -DCMAKE_INSTALL_PREFIX=".build_x64/install" -DCMAKE_BUILD_TYPE=Debug
     - name: cmake
       run: cmake --build .build_x64  -j  --target install --config Debug
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        token: ${{ secrets.release_token }}
+          files: |
+            ./build_x64/install/**
