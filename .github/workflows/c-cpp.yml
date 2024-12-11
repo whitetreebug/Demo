@@ -2,10 +2,10 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - "main"
+    tags:
+      - "v*"
 jobs:
   build:
 
