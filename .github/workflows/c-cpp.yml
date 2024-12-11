@@ -16,4 +16,4 @@ jobs:
     - name: cmake init
       run: cmake -S . -B .build_x64   -DCMAKE_BUILD_TYPE=Debug
     - name: cmake
-      run: cmake --build .build_x64  -j --target install --config Debug    
+      run: cmake --build .build_x64  -j --config Debug    
