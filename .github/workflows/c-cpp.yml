@@ -17,7 +17,7 @@ jobs:
       run: cmake --build .build_x64  -j  --target install --config Debug
     - name: tar
       run: |          
-        tar -czvf Demo.tar.gz .
+        tar -czvf Demo.tar.gz ./.build_x64/install
     - name: Upload to release
       uses: softprops/action-gh-release@v1      
       with:
