@@ -18,15 +18,20 @@ jobs:
       run: cmake -S . -B .build_x64  -DCMAKE_INSTALL_PREFIX=".build_x64/install" -DCMAKE_BUILD_TYPE=Debug
     - name: cmake build
       run: cmake --build .build_x64  -j  --target install --config Debug
-    - name: gzip
+    - name: zip
       run: |          
-        tar -czvf Demo.tar.gz .build_x64/install/
+        zip -r Demo .build_x64/install/
     - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
+      uses: softprops/action-gh-release@v1      
       with:
-        args: Demo.tar.gz application/octet-stream
-      env:
-          GITHUB_TOKEN: ${{ secrets.release_token }}   
+        tag_name: ${{ github.ref }}
+        name: Release ${{ github.ref }}
+        body: TODO New Release.
+        draft: false
+        prerelease: false
+        files: |
+          Demo.zip
+          LICENSE 
 
 
 
