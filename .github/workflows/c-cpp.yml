@@ -15,9 +15,9 @@ jobs:
       run: cmake -S . -B .build_x64  -DCMAKE_INSTALL_PREFIX=".build_x64/install" -DCMAKE_BUILD_TYPE=Debug
     - name: cmake build
       run: cmake --build .build_x64  -j  --target install --config Debug
-    - name: zip
+    - name: tar
       run: |          
-        zip -r Demo .build_x64/install/
+        tar -czvf Demo.tar.gz .build_x64/install/
     - name: Upload to release
       uses: softprops/action-gh-release@v1      
       with:
@@ -27,7 +27,7 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          Demo.zip
+          Demo.tar.gz
           LICENSE 
 
 
