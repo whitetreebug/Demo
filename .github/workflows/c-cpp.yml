@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: windows-2019
-    defaults:
-      run:
-        working-directory: workspace
     steps:
     - uses: actions/checkout@main
     - name: msvc build
